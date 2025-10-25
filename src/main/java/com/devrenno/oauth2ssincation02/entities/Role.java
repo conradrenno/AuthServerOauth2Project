@@ -1,12 +1,11 @@
 package com.devrenno.oauth2ssincation02.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Objects;
-
+@Entity
+@Table(name = "tb_role")
 public class Role implements GrantedAuthority {
 
     @Id

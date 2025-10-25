@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "tb_user")
 public class User implements UserDetails {
 
     @Id
@@ -17,6 +18,7 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
+    private Boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_authority",
@@ -27,10 +29,19 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username, String password, List<Role> authorities) {
+    public User(String username, String password, List<Role> authorities, Boolean enabled) {
         this.username = username;
         this.password = password;
         this.authorities = authorities;
+        this.enabled = enabled;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Long getId() {
